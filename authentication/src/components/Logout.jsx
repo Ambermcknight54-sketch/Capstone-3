@@ -2,6 +2,19 @@ import { useModalTWE } from "../hooks/useModalTWE";
 
 export function Logout() {
   useModalTWE();
+
+  const ref = useRef(null);
+  function handleLogout() {
+    ref.current?.click();
+
+    const emptyCredentials = {
+      username: "",
+      password: "",
+    };
+
+    localStorage.setItem("user", JSON.stringify(emptyCredentials));
+    setLogin(emptyCredentials);
+  }
   return (
     <>
       {/* Button trigger modal */}
